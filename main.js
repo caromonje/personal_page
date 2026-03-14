@@ -14,15 +14,25 @@
   const hasFineCursor = window.matchMedia('(pointer: fine)').matches;
 
   if (hasFineCursor && cursor && follower) {
-    let mouseX = 0;
-    let mouseY = 0;
-    let followerX = 0;
-    let followerY = 0;
+    let mouseX = -100;
+    let mouseY = -100;
+    let followerX = -100;
+    let followerY = -100;
+    let cursorVisible = false;
     const speed = 0.15; // Follower lag (lower = smoother trail)
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
+      // Show cursor on first move
+      if (!cursorVisible) {
+        cursorVisible = true;
+        followerX = mouseX;
+        followerY = mouseY;
+        cursor.classList.add('cursor--visible');
+        follower.classList.add('cursor-follower--visible');
+      }
 
       // Dot follows instantly
       cursor.style.left = mouseX + 'px';
@@ -68,12 +78,14 @@
 
     // Hide cursor when leaving viewport
     document.addEventListener('mouseleave', () => {
-      cursor.classList.add('cursor--hidden');
-      follower.classList.add('cursor-follower--hidden');
+      cursor.classList.remove('cursor--visible');
+      follower.classList.remove('cursor-follower--visible');
     });
     document.addEventListener('mouseenter', () => {
-      cursor.classList.remove('cursor--hidden');
-      follower.classList.remove('cursor-follower--hidden');
+      if (cursorVisible) {
+        cursor.classList.add('cursor--visible');
+        follower.classList.add('cursor-follower--visible');
+      }
     });
 
     // Click effect — quick shrink
