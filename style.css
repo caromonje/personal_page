@@ -133,21 +133,12 @@ a {
   border-color: transparent;
 }
 
-/* Hide custom cursor on touch devices */
-@media (pointer: coarse) {
-  .cursor,
-  .cursor-follower {
-    display: none !important;
-  }
-}
-
-/* Hide default cursor on non-touch devices */
-@media (pointer: fine) {
-  *,
-  a,
-  button {
-    cursor: none !important;
-  }
+/* Hide default cursor — activated by JS when mouse is detected */
+body.has-custom-cursor,
+body.has-custom-cursor *,
+body.has-custom-cursor a,
+body.has-custom-cursor button {
+  cursor: none !important;
 }
 
 

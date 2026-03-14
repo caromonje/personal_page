@@ -10,36 +10,45 @@
   const cursor = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
 
-  // Only activate on non-touch devices
-  const hasFineCursor = window.matchMedia('(pointer: fine)').matches;
-
-  if (hasFineCursor && cursor && follower) {
+  if (cursor && follower) {
     let mouseX = -100;
     let mouseY = -100;
     let followerX = -100;
     let followerY = -100;
-    let cursorVisible = false;
-    const speed = 0.15; // Follower lag (lower = smoother trail)
+    let activated = false;
+    let animating = false;
+    const speed = 0.15;
+
+    function activateCursor() {
+      if (activated) return;
+      activated = true;
+      document.body.classList.add('has-custom-cursor');
+    }
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      // Show cursor on first move
-      if (!cursorVisible) {
-        cursorVisible = true;
+      // First move: activate everything
+      if (!activated) {
+        activateCursor();
         followerX = mouseX;
         followerY = mouseY;
-        cursor.classList.add('cursor--visible');
-        follower.classList.add('cursor-follower--visible');
       }
 
-      // Dot follows instantly
+      cursor.classList.add('cursor--visible');
+      follower.classList.add('cursor-follower--visible');
+
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
+
+      // Start animation loop on first move
+      if (!animating) {
+        animating = true;
+        animateFollower();
+      }
     });
 
-    // Follower trails with easing via requestAnimationFrame
     function animateFollower() {
       followerX += (mouseX - followerX) * speed;
       followerY += (mouseY - followerY) * speed;
@@ -49,7 +58,6 @@
 
       requestAnimationFrame(animateFollower);
     }
-    animateFollower();
 
     // Hover effects on interactive elements
     const interactiveEls = document.querySelectorAll('a, button, .portfolio-item, details summary');
@@ -76,19 +84,19 @@
       });
     });
 
-    // Hide cursor when leaving viewport
+    // Hide when leaving viewport, show when re-entering
     document.addEventListener('mouseleave', () => {
       cursor.classList.remove('cursor--visible');
       follower.classList.remove('cursor-follower--visible');
     });
     document.addEventListener('mouseenter', () => {
-      if (cursorVisible) {
+      if (activated) {
         cursor.classList.add('cursor--visible');
         follower.classList.add('cursor-follower--visible');
       }
     });
 
-    // Click effect — quick shrink
+    // Click effect
     document.addEventListener('mousedown', () => {
       cursor.style.transform = 'translate(-50%, -50%) scale(0.6)';
       follower.style.transform = 'translate(-50%, -50%) scale(0.85)';
@@ -97,6 +105,14 @@
       cursor.style.transform = 'translate(-50%, -50%) scale(1)';
       follower.style.transform = 'translate(-50%, -50%) scale(1)';
     });
+
+    // Disable on touch — if a touch event fires, remove custom cursor
+    window.addEventListener('touchstart', () => {
+      activated = false;
+      document.body.classList.remove('has-custom-cursor');
+      cursor.classList.remove('cursor--visible');
+      follower.classList.remove('cursor-follower--visible');
+    }, { once: true });
   }
 
   // ── Intersection Observer: Reveal on Scroll ─────────────────────
