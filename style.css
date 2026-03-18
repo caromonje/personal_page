@@ -3,12 +3,12 @@
    ============================================ */
 
 :root {
-  --paper: #F9F7F2;
-  --ink: #1A1A1A;
-  --ink-light: #6B6B6B;
-  --ink-faint: #A0A0A0;
-  --rule: #D4D0C8;
-  --accent: #8B8578;
+  --paper: #2D2D2D;
+  --ink: #F0F0F0;
+  --ink-light: #B0B0B0;
+  --ink-faint: #777777;
+  --rule: #444444;
+  --accent: #999999;
 
   --serif: 'Cormorant Garamond', 'Georgia', serif;
   --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -75,7 +75,7 @@ a {
   left: 0;
   width: 8px;
   height: 8px;
-  background-color: #1A1A1A;
+  background-color: var(--ink);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -95,7 +95,7 @@ a {
   left: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid #1A1A1A;
+  border: 1px solid var(--ink);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -128,7 +128,7 @@ a {
   width: 2px;
   height: 28px;
   border-radius: 1px;
-  opacity: 0.6;
+  opacity: 0.8;
   background-color: var(--ink);
   border-color: transparent;
 }
@@ -303,6 +303,23 @@ body.has-custom-cursor button {
   justify-content: center;
   padding: var(--space-2xl) var(--page-margin);
   text-align: center;
+  position: relative;
+  background-image: url('images/hero-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero__kicker {
@@ -534,7 +551,7 @@ body.has-custom-cursor button {
 }
 
 .index-entry:hover {
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .index-entry__summary {
@@ -694,7 +711,7 @@ body.has-custom-cursor button {
   color: var(--ink-light);
   line-height: 1.5;
   padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
