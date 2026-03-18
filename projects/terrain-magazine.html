@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terrain Magazine — Helen Caroline Monje Morales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .project-header {
+      padding: var(--space-2xl) var(--page-margin) var(--space-xl);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .project-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: var(--space-lg);
+      transition: color 0.3s ease;
+    }
+
+    .project-back:hover {
+      color: var(--ink);
+    }
+
+    .project-back svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .project-gallery {
+      padding: 0 var(--page-margin) var(--space-2xl);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .project-gallery img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-gallery .gallery-row {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .project-gallery .gallery-row--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-gallery .gallery-row--3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+      .project-gallery .gallery-row--2,
+      .project-gallery .gallery-row--3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="project-header">
+      <a href="../index.html" class="project-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to portfolio
+      </a>
+
+      <h1 class="project-title">Aether Collective</h1>
+      <p class="project-meta">Brand Identity — 2025</p>
+      <p class="project-description">
+        Brief description of the project goes here. What was the challenge,
+        what was your role, and what was the outcome.
+      </p>
+    </div>
+
+    <div class="project-gallery">
+      <!-- Full-width image -->
+      <!-- <img src="../images/projects/aether-collective/01.jpg" alt="Aether Collective — Overview"> -->
+
+      <!-- Two images side by side -->
+      <!-- <div class="gallery-row gallery-row--2">
+        <img src="../images/projects/aether-collective/02.jpg" alt="Aether Collective — Detail">
+        <img src="../images/projects/aether-collective/03.jpg" alt="Aether Collective — Detail">
+      </div> -->
+
+      <!-- Three images in a row -->
+      <!-- <div class="gallery-row gallery-row--3">
+        <img src="../images/projects/aether-collective/04.jpg" alt="Aether Collective — Detail">
+        <img src="../images/projects/aether-collective/05.jpg" alt="Aether Collective — Detail">
+        <img src="../images/projects/aether-collective/06.jpg" alt="Aether Collective — Detail">
+      </div> -->
+
+      <!-- Placeholder until images are added -->
+      <div style="padding: var(--space-2xl); text-align: center; border: 1px dashed var(--rule);">
+        <p style="font-family: var(--serif); font-style: italic; color: var(--ink-faint);">
+          Add project images to images/projects/aether-collective/ and uncomment the img tags above.
+        </p>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

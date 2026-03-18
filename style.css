@@ -3,12 +3,12 @@
    ============================================ */
 
 :root {
-  --paper: #2D2D2D;
-  --ink: #F0F0F0;
-  --ink-light: #B0B0B0;
-  --ink-faint: #777777;
-  --rule: #444444;
-  --accent: #999999;
+  --paper: #F9F7F2;
+  --ink: #1A1A1A;
+  --ink-light: #6B6B6B;
+  --ink-faint: #A0A0A0;
+  --rule: #D4D0C8;
+  --accent: #8B8578;
 
   --serif: 'Cormorant Garamond', 'Georgia', serif;
   --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -301,25 +301,41 @@ body.has-custom-cursor button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-2xl) var(--page-margin);
-  text-align: center;
-  position: relative;
-  background-image: url('images/hero-banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.55);
+  padding: var(--space-2xl) 0;
 }
 
 .hero__content {
   position: relative;
   z-index: 1;
+  padding: 0 var(--page-margin);
+}
+
+.hero__banner {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 45vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/main/steve-gribble-XANYe86dewg-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+}
+
+.hero__banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
 }
 
 .hero__kicker {
@@ -327,8 +343,8 @@ body.has-custom-cursor button {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: var(--space-lg);
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--space-sm);
 }
 
 .hero__title {
@@ -337,13 +353,14 @@ body.has-custom-cursor button {
   font-weight: 300;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero__subtitle {
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-weight: 300;
-  color: var(--ink-light);
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1.8;
 }
 
@@ -398,6 +415,12 @@ body.has-custom-cursor button {
   grid-template-columns: repeat(12, 1fr);
   gap: var(--space-md);
   align-items: start;
+}
+
+a.portfolio-item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .portfolio-item {
@@ -551,7 +574,7 @@ body.has-custom-cursor button {
 }
 
 .index-entry:hover {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(0, 0, 0, 0.01);
 }
 
 .index-entry__summary {
@@ -711,7 +734,7 @@ body.has-custom-cursor button {
   color: var(--ink-light);
   line-height: 1.5;
   padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
@@ -976,7 +999,8 @@ body.has-custom-cursor button {
   }
 
   .hero {
-    min-height: 85vh;
+    min-height: auto;
+    padding-top: 6rem;
   }
 
   .hero__kicker {
