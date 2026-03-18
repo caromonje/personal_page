@@ -314,7 +314,7 @@ body.has-custom-cursor button {
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: 45vh;
+  aspect-ratio: 21 / 9;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1001,6 +1001,10 @@ a.portfolio-item {
   .hero {
     min-height: auto;
     padding-top: 6rem;
+  }
+
+  .hero__banner {
+    aspect-ratio: 16 / 9;
   }
 
   .hero__kicker {
