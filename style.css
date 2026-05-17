@@ -325,10 +325,9 @@ body.has-custom-cursor button {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('images/main/steve-gribble-XANYe86dewg-unsplash.jpg');
+  background-image: url('images/main/hero.jpg');
   background-size: cover;
   background-position: center;
-  filter: grayscale(100%);
 }
 
 .hero__banner::after {
