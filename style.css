@@ -308,6 +308,9 @@ body.has-custom-cursor button {
   position: relative;
   z-index: 1;
   padding: 0 var(--page-margin);
+  /* Text block sits left of centre, with a comfortable measure */
+  max-width: min(46rem, 58%);
+  margin-right: auto;
 }
 
 .hero__banner {
@@ -318,7 +321,7 @@ body.has-custom-cursor button {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .hero__banner::before {
@@ -326,15 +329,25 @@ body.has-custom-cursor button {
   position: absolute;
   inset: 0;
   background-image: url('images/main/hero.jpg');
-  background-size: cover;
-  background-position: center;
+  /* Zoom + left anchor pushes the mockup toward the right half,
+     leaving the left side clear for the text */
+  background-size: 130%;
+  background-position: 0% 60%;
+  background-repeat: no-repeat;
 }
 
 .hero__banner::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.55);
+  /* Scrim is heaviest behind the text and fades off the artwork */
+  background-image: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.68) 30%,
+    rgba(0, 0, 0, 0.35) 58%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
 }
 
 .hero__kicker {
@@ -342,7 +355,7 @@ body.has-custom-cursor button {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255);
   margin-bottom: var(--space-sm);
 }
 
@@ -353,16 +366,18 @@ body.has-custom-cursor button {
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin-bottom: var(--space-sm);
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+  text-align: left;
+  text-wrap: balance;
 }
 
 .hero__subtitle {
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 1.8;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.6;
+  text-align: left;
 }
-
 
 /* ============================================
    SECTIONS (shared)
@@ -936,8 +951,33 @@ a.portfolio-item {
     line-height: 1.2;
   }
 
-  .hero__subtitle br {
-    display: none;
+  /* Narrow screens: text takes the full banner, scrim goes even */
+  .hero__content {
+    max-width: 100%;
+  }
+
+  /* Stack instead of overlap: text up top, artwork below it */
+  .hero__banner {
+    aspect-ratio: 5 / 4;
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    padding-top: var(--space-lg);
+  }
+
+  .hero__banner::before {
+    background-size: cover;
+    background-position: 55% center;
+  }
+
+  .hero__banner::after {
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
   }
 
   .portfolio-grid {
@@ -1003,7 +1043,7 @@ a.portfolio-item {
   }
 
   .hero__banner {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 5;
   }
 
   .hero__kicker {
